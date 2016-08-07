@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow|PT+Sans+Caption&subset=latin,cyrillic);
+body {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 16px;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'PT Sans Caption', sans-serif;
+}
+.header {
+  background: #5A009D;
+  color: #fff;
+  padding: 10px;
+}
+.header .blog-caption {
+  margin: 0px;
+  font-size: 18px;
+  font-weight: normal;
+}
