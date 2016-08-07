@@ -8,7 +8,7 @@ module.exports={
 		port : 8080,
 		mongodb : {
 			
-			db : ""
+			db : "dskblog_dev"
 			
 		}
 		
