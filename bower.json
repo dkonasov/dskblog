@@ -1,0 +1,24 @@
+{
+  "name": "dskblog",
+  "description": "Dmitriy Konasov's blog platform",
+  "main": "app.js",
+  "authors": [
+    "Dmitriy Konasov"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "blog"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
