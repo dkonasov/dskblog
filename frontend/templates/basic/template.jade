@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='dskblog')
 	head
 		meta(charset='utf-8')
 		base(href='/')
@@ -16,4 +16,7 @@ html
 			div(class='main')
 				div(class='row')
 					div(class='col-lg-12') Добро пожаловать в блог Дмитрия Конасова! В данный момент сайт находится в стадии разработки.
+		script(src='/angular/angular.min.js')
+		script(src='/angular/angular-route.min.js')
+		script(src='/js/app.js')
 	

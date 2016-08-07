@@ -6,6 +6,8 @@ gulp.task('default', function(callback)
 	
 	runSequence("less",
 				"bootstrap",
+				'angularlibs',
+				"appscripts",
               callback);
 	
 });
@@ -27,3 +29,34 @@ gulp.task('bootstrap', function()
 	
 }
 );
+
+gulp.task('angularlibs', function()
+{
+	
+	return gulp.src(
+	[
+	
+		'./bower_components/angular/angular.min.js',
+		'./bower_components/angular/angular.min.js.map',
+		'./bower_components/angular-route/angular-route.min.js',
+		'./bower_components/angular-route/angular-route.min.js.map'
+		
+	])
+	.pipe(gulp.dest('./dist/angular'));
+	
+}
+);
+
+gulp.task('appscripts', function()
+{
+	
+	return gulp.src(
+	[
+	
+		'./frontend/js/app/app.js'
+		
+	])
+	.pipe(gulp.dest('./dist/js'));
+	
+}
+)
