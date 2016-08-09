@@ -8,6 +8,7 @@ gulp.task('default', function(callback)
 				"bootstrap",
 				'angularlibs',
 				"appscripts",
+				"views",
               callback);
 	
 });
@@ -53,10 +54,20 @@ gulp.task('appscripts', function()
 	return gulp.src(
 	[
 	
-		'./frontend/js/app/app.js'
+		'./frontend/js/app/app.js',
+		'./frontend/js/app/controllers.js'
 		
 	])
 	.pipe(gulp.dest('./dist/js'));
 	
 }
-)
+);
+
+gulp.task('views', function()
+{
+	
+	return gulp.src('./frontend/views/*.view.html')
+	.pipe(gulp.dest('./dist/views'));
+	
+}
+);
