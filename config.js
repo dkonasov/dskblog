@@ -2,6 +2,7 @@ module.exports={
 	
 	env : "dev",
 	template : "basic",
+	secret : 'donttellthesecret',
 	baseDir : __dirname,
 	dev : {
 		

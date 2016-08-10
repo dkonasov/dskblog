@@ -13,12 +13,17 @@
   "author": "Dmitriy Konasov",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.0",
     "gulp": "^3.9.1",
     "gulp-less": "^3.1.0",
     "jade": "^1.11.0",
     "mongoose": "^4.5.8",
     "node-watch": "^0.4.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "readline-sync": "^1.4.4",
     "run-sequence": "^1.2.2"
   }

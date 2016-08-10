@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-lg-6 col-xs-12">
+		<form class="login-form" ng-submit="$ctrl.authorize()">
+			<p class="bg-danger form-error" ng-show="$ctrl.loginError">Неверный логин или пароль</p>
+			<p class="bg-danger form-error" ng-show="$ctrl.serverError">Ошибка авторизации. Повторите ваш запрос позже.</p>
+			<div class="form-group">
+				<label for="login">Логин</label>
+				<input type="text" class="form-control" name="login" ng-model="$ctrl.user.username" />
+			</div>
+			<div class="form-group">
+				<label for="password">Пароль</label>
+				<input type="password" name="password" ng-model="$ctrl.user.password" class="form-control" />
+			</div>
+			<button type="submit" class="btn btn-primary">Вход</button>
+		</form>
+	</div>
+</div>
