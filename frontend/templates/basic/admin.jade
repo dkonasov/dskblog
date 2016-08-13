@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='dskblog')
 	head
 		meta(charset='utf-8')
 		base(href='/')
@@ -13,7 +13,11 @@ html
 			div(class='row header')
 				div(class='col-lg-12')
 					h1(class='blog-caption') Admin panel
-			div(class='main')
-				div(class='row')
-					div(class='col-lg-12') Welcome to admin panel.
-	
+			div(class='main', ng-view)
+		script(src='/angular/angular.min.js')
+		script(src='/angular/angular-route.min.js')
+		script(src='/angular/ui-bootstrap.min.js')
+		script(src='/angular/ui-bootstrap-tpls.min.js')
+		script(src='/js/app.js')
+		
+		

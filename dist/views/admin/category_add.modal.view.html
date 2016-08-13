@@ -1,0 +1,22 @@
+<form class="add_category_form" ng-submit="save()" name="add_category_form">
+	<div class="modal-body">
+		<div class="form-group">
+			<p class="bg-danger form-error" ng-show="add_category_form.category_name.$invalid && add_category_form.category_name.$dirty">
+				Заполните это поле!
+			</p>
+			<label for="category_name">Название категории</label>
+			<input type="text" name="category_name" ng-model="category.name" class="form-control" required />
+		</div>
+		<div class="form-group">
+			<p class="bg-danger form-error" ng-show="add_category_form.slug.$invalid && add_category_form.slug.$dirty">
+				Заполните это поле!
+			</p>
+			<label for="slug">Символьный код</label>
+			<input type="text" name="slug" ng-model="category.slug" class="form-control" required />
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-disabled="add_category_form.$invalid">Сохранить</button>
+		<a class="btn btn-warning" ng-click="closeModal()">Отмена</a>
+	</div>
+</form>

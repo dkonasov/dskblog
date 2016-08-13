@@ -6,7 +6,29 @@
 		router.start=function()
 	{
 		
-		app.post('/auth/:action/', function(req, res, next)
+		app.get('/api/:entity/', function(req, res)
+		{
+			
+			var entityController;
+			try
+			{
+				
+				entityController=require('../backend/controllers/'+req.params.entity+'.controller.js')();
+				entityController.read(req, res);
+				
+			}
+			catch(err)
+			{
+				
+				console.log(err);
+				res.status(404).end();
+				
+			}
+			
+		}
+		
+		)
+		.post('/auth/:action/', function(req, res, next)
 		{
 			
 			var controller;

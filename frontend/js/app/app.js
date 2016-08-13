@@ -1,11 +1,11 @@
-(function()
-{
+(function(window){
 	
-	var dskblog=angular.module('dskblog', 
+	window.dskblog=angular.module('dskblog', 
 	[
 	
 		'ngRoute',
-		'dskblogControllers'
+		'dskblogControllers',
+		'ui.bootstrap'
 	
 	]
 	);
@@ -26,6 +26,20 @@
 			"templateUrl" : "/views/login.view.html",
 			"controller" : "LoginController"
 			
+		})
+		.when('/admin/', 
+		{
+			
+			"templateUrl" : "/views/admin/index.view.html",
+			"controller" : "AdminIndexController"
+			
+		})
+		.when('/admin/category/', 
+		{
+			
+			"templateUrl" : "/views/admin/category.view.html",
+			"controller" : "AdminCategoriesController"
+			
 		});
 		
 		$locationProvider.html5Mode(true);
@@ -33,56 +47,7 @@
 	}
 	]);
 	
-	var loginComponentController=function($http)
-	{
-		
-		var ctrl=this;
-		ctrl.loginError = false;
-		ctrl.serverError = false;
-		ctrl.user={
-			
-			'username' : '',
-			'password' : ''
-			
-		}
-		
-		ctrl.authorize=function()
-		{
-			
-			
-			
-			$http.post('/auth/login/', ctrl.user).then(function(response)
-			{
-				ctrl.serverError = false;
-				ctrl.loginError = false;
-				location.href="/";
-				
-			},
-			function(response)
-			{
-				
-				if(response.status==500)
-				{
-					
-					ctrl.serverError = true;
-					
-				}
-				else
-				{
-					
-					ctrl.loginError=true;
-					
-				}
-				
-			}
-			);
-			
-		}
-		
-	};
-	loginComponentController.$inject = ['$http'];
 	
-	dskblog.component('login', { 'templateUrl' : '/views/login.component.view.html', 'controller' : loginComponentController});
 	
 }
-)()
+)(window);

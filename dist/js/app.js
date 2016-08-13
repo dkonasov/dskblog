@@ -1,11 +1,11 @@
-(function()
-{
+(function(window){
 	
-	var dskblog=angular.module('dskblog', 
+	window.dskblog=angular.module('dskblog', 
 	[
 	
 		'ngRoute',
-		'dskblogControllers'
+		'dskblogControllers',
+		'ui.bootstrap'
 	
 	]
 	);
@@ -26,12 +26,156 @@
 			"templateUrl" : "/views/login.view.html",
 			"controller" : "LoginController"
 			
+		})
+		.when('/admin/', 
+		{
+			
+			"templateUrl" : "/views/admin/index.view.html",
+			"controller" : "AdminIndexController"
+			
+		})
+		.when('/admin/category/', 
+		{
+			
+			"templateUrl" : "/views/admin/category.view.html",
+			"controller" : "AdminCategoriesController"
+			
 		});
 		
 		$locationProvider.html5Mode(true);
 		
 	}
 	]);
+	
+	
+	
+}
+)(window);
+
+(function(window)
+{
+	
+	window.dskblogControllers=angular.module('dskblogControllers', []);
+	
+	
+	
+	
+	
+	
+	
+}
+)(window);
+(function()
+{
+	
+	dskblogControllers.controller('IndexController', ['$scope', function($scope)
+	{
+		
+		
+		
+	}
+	]);
+	
+}()
+);
+(function()
+{
+	
+	dskblogControllers.controller('LoginController', ['$scope', function($scope)
+	{
+		
+		
+		
+	}
+	]);
+	
+}
+());
+(function()
+{
+	
+	dskblogControllers.controller('AdminCategoriesController', ['$scope', function($scope)
+	{
+		
+		
+		
+	}
+	]);
+	
+}()
+);
+(function()
+{
+	
+	dskblogControllers.controller('AdminIndexController', ['$scope', function($scope)
+	{
+		
+		
+		
+	}
+	]);
+	
+}
+());
+(function()
+{
+	dskblog.controller('addCategoryModal', ['$http', '$uibModalInstance', '$scope', 'category', function($http, $uibModalInstance, $scope, category)
+	{
+		
+		$scope.category=category;
+		$scope.save = function()
+		{
+			
+			console.log($scope.category);
+			
+		}
+		
+		$scope.closeModal = function()
+		{
+			
+			$uibModalInstance.dismiss('cancel');
+			
+		}
+		
+	}]);
+	var categoryComponentController=function($uibModal)
+	{
+		
+		var ctrl = this;
+		ctrl.category={'name' : '', 'slug' : ''};
+		ctrl.openAddModal = function()
+		{
+			
+			$uibModal.open(
+			{
+				
+				'templateUrl' : '/views/admin/category_add.modal.view.html',
+				'controller' : 'addCategoryModal',
+				'resolve' : {
+					
+					
+					category : function()
+					{
+						
+						return ctrl.category;
+						
+					}
+					
+				}
+				
+			});
+			
+		}
+		
+	}
+	
+	categoryComponentController.$inject = ['$uibModal'];
+	dskblog.component('categoryadmin', { 'templateUrl' : '/views/admin/category.component.view.html', 'controller' : categoryComponentController});
+	
+}
+());
+(function()
+{
 	
 	var loginComponentController=function($http)
 	{
@@ -85,4 +229,4 @@
 	dskblog.component('login', { 'templateUrl' : '/views/login.component.view.html', 'controller' : loginComponentController});
 	
 }
-)()
+());

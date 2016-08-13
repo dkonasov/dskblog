@@ -1,4 +1,4 @@
-describe("useradd", function()
+describe("Main test", function()
 {
 	
 	var assert = require('assert');
@@ -11,21 +11,19 @@ describe("useradd", function()
 			
 	});
 	
-	it('should add user', function(done)
+	/*it('should add category', function(done)
 	{
 		
-		var userData={
+		var categoryData={
 				
-				login : "testuser",
-				password : "kmmm2014",
-				isAdmin : true
+				name : 'test category'
 				
 				
 			};
 			
-		var User=require('../backend/models/user.js');
-		var user=new User(userData);
-		user.save(function(err)
+		var Category=require('../backend/models/category.js');
+		var category=new Category(categoryData);
+		category.save(function(err)
 		{
 				
 			assert.equal(err==null, true);
@@ -34,23 +32,22 @@ describe("useradd", function()
 		});
 		
 	}
-	);
+	);*/
 	
-	it('should not add user without login', function(done)
+	it('should not add category without slug', function(done)
 	{
 		
-		var userData={
+		var categoryData={
 				
-				login : "",
-				password : "kmmm2014",
-				isAdmin : true
+				'name' : 'test category 2',
+				'slug' : ''
 				
 				
 			};
 			
-		var User=require('../backend/models/user.js');
-		var user=new User(userData);
-		user.save(function(err)
+		var Category=require('../backend/models/category.js');
+		var category=new Category(categoryData);
+		category.save(function(err)
 		{
 				
 			assert.equal(err!=null, true);
@@ -61,30 +58,7 @@ describe("useradd", function()
 	}
 	);
 	
-	it('should not add user without password', function(done)
-	{
-		
-		var userData={
-				
-				login : "testuser2",
-				password : "",
-				isAdmin : true
-				
-				
-			};
-			
-		var User=require('../backend/models/user.js');
-		var user=new User(userData);
-		user.save(function(err)
-		{
-				
-			assert.equal(err!=null, true);
-			done();
-				
-		});
-		
-	}
-	);
+	
 	
 }
 );
