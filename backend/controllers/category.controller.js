@@ -36,9 +36,79 @@
 		
 		categoryEntityController.read = function(req, res)
 		{
+			var Category = require('../models/category.js');
+			if(!req.params.id)
+			{
+				
+				var paginator = req.query.paginator ? JSON.parse(req.query.paginator) : {};
+				var sort = req.query.sort ? JSON.parse(req.query.sort) : {};
+				Category.find().sort(sort).skip(paginator.skip).limit(paginator.limit).exec(function(err, result)
+				{
+					
+					if(err)
+					{
+						
+						console.log(err);
+						res.status(500).end();
+						
+					}
+					else
+					{
+						
+						Category.count(function(err, count)
+						{
+							
+							if(err)
+							{
+								
+								console.log(err);
+								res.status(500).end();
+								
+							}
+							else
+							{
+								
+								res.set('TotalElements', count);
+								res.json(result);
+								
+							}
+							
+						}
+						);
+						
+					}
+					
+				}
+				);
+				
+				
+			}
+			else
+			{
+				
+				Category.findById(req.params.id, function(err, result)
+				{
+					
+					if(err)
+					{
+						
+						console.log(err);
+						res.status(500).end();
+						
+					}
+					else
+					{
+						
+						res.json(result);
+						
+					}
+					
+				}
+				);
+				
+			}
 			
-			var result={name : 'get test'};
-			res.json(result);
+			
 			
 			
 		}

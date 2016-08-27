@@ -29,6 +29,27 @@
 		}
 		
 		)
+		.get('/api/:entity/:id', function(req, res)
+		{
+			
+			var entityController;
+			try
+			{
+				
+				entityController=require('../backend/controllers/'+req.params.entity+'.controller.js')();
+				entityController.read(req, res);
+				
+			}
+			catch(err)
+			{
+				
+				console.log(err);
+				res.status(404).end();
+				
+			}
+			
+		}
+		)
 		.post('/api/:entity/', function(req, res)
 		{
 			

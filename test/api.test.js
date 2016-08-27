@@ -5,103 +5,46 @@ describe("Api test", function()
 	var config=require("../config.js");
 	//var http = require('http');
 	var request = require('request');
-	/*it('Categories get available', function(done)
+/*
+	it('Get categories list', function(done)
 	{
 		
-		this.timeout(15000);
-		var options = {
-			
-			host : '127.0.0.1',
-			path : '/api/category/',
-			method : 'get',
-			port : '8080'
-			
-		}
-		http.request(options, function(res)
+		request.get('http://127.0.0.1:8080/api/category/', function(error, response, body)
 		{
 			
-			
-			assert.equal(res.statusCode, 200);
+			console.log(body);
+			assert(!error && response.statusCode == 200);
 			done();
 			
 		}
-		).end();
-		
+		);
 		
 	}
-	
 	);
 	
-	it('Test categories are working', function(done)
+	*/
+	it('Get single category', function(done)
 	{
 		
-		this.timeout(15000);
-		var options = {
-			
-			host : '127.0.0.1',
-			path : '/api/category/',
-			method : 'get',
-			port : '8080'
-			
-		}
-		http.request(options, function(res)
+		request.get('http://127.0.0.1:8080/api/category/', function(error, response, body)
 		{
-			
-			
-			var rawData='';
-			res.on('data', function(chunk)
+			console.log(body);
+			var articles = JSON.parse(body);
+			console.log('http://127.0.0.1:8080/api/category/' + articles[0]._id);
+			request.get('http://127.0.0.1:8080/api/category/' + articles[0]._id, function(error, response, body)
 			{
 				
-				rawData+=chunk;
-				
-			});
-			
-			res.on('end', function()
-			{
-				
-				
-				var data = JSON.parse(rawData);
-				assert(data.name.length > 0);
+				console.log(body);
+				assert(!error && response.statusCode == 200);
 				done();
-				
 				
 			}
 			);
 			
 		}
-		).end();
-		
-		
-	}
-	
-	);*/
-	it('Add category', function(done)
-	{
-		
-		request.post(
-		
-			'http://127.0.0.1:8080/api/category/', 
-			{ form : {
-				
-				name : 'test',
-				slug : 'test'
-				
-			}},
-			function(error, response, body)
-			{
-				if(error)
-				{console.log(error);}
-				assert(!error && response.statusCode == 200);
-				done();
-				
-			}
-		
-		)
+		);
 		
 	}
 	);
-	
-	
-	
 }
 );
