@@ -78,7 +78,7 @@
 			});
 			
 			var router=require('../server_modules/router.js')(passport, app, config);
-			app.use(express.static('dist'));
+			app.use(express.static(__dirname + '/../dist'));
 			router.start();
 			var port=config[config.env].port;
 			app.set('view engine', 'jade');
