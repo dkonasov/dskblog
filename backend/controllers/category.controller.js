@@ -7,30 +7,39 @@
 		var categoryEntityController={};
 		categoryEntityController.create = function(req, res)
 		{
-			
-			var Category = require('../models/category.js');
-			var category = new Category(req.body);
-			category.save(function(err)
-			{
-				
-				if(err)
+			if(req.isAuthenticated() && req.user.isAdmin){
+
+				var Category = require('../models/category.js');
+				var category = new Category(req.body);
+				category.save(function(err)
 				{
+				
+					if(err)
+					{
 					
-					console.log(err);
-					res.status(500).end();
+						console.log(err);
+						res.status(500).end();
 					
-				}
-				else
-				{
+					}
+					else
+					{
 					
 					
-					res.status(200).end();
+						res.status(200).end();
 					
-				}
+					}
 				
 				
+				}
+				);
+
+			} else {
+
+				res.status(401).end();
+
+
 			}
-			);
+			
 			
 		}
 		
@@ -116,7 +125,9 @@
 		categoryEntityController.update = function(req, res)
 		{
 			
-			if(req.params.id)
+			if(req.isAuthenticated() && req.user.isAdmin){
+
+				if(req.params.id)
 			{
 				
 				var Category = require('../models/category.js');
@@ -148,28 +159,45 @@
 				res.status(500).end();
 				
 			}
+
+
+			} else {
+
+				res.status(401).end();
+
+
+			}
+			
 			
 		}
 		
 		categoryEntityController.delete = function(req, res)
 		{
+			if(req.isAuthenticated() && req.user.isAdmin){
 
-			if(req.params.id){
+				if(req.params.id){
 
-				var Category = require('../models/category.js');
-				Category.findByIdAndRemove(req.params.id, function(){
+					var Category = require('../models/category.js');
+					Category.findByIdAndRemove(req.params.id, function(){
 
-					res.status(200).end();
+						res.status(200).end();
 
-				});
+					});
+
+				} else {
+
+					console.log("trying to delete category without id!");
+					res.status(500).end();
+
+				}
+
+			} else {
+
+				res.status(401).end();
+
 
 			}
-			else{
-
-				console.log("trying to delete category without id!");
-				res.status(500).end();
-
-			}
+			
 
 		}
 		return categoryEntityController;

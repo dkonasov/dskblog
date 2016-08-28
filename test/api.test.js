@@ -72,7 +72,7 @@ describe("Api test", function()
 		
 	}
 	);*/
-	it('Delete category', function(done){
+	/*it('Delete category', function(done){
 
 		request.get('http://127.0.0.1:8080/api/category/', function(error, response, body)
 		{
@@ -93,6 +93,17 @@ describe("Api test", function()
 			
 		}
 		);
+
+	});*/
+	it('Access denied for non-admins', function(done){
+
+		request.post('http://127.0.0.1:8080/api/category/', function(error, response, body)
+		{
+
+			assert(!error && response.statusCode == 401);
+			done();
+
+		});
 
 	});
 }
