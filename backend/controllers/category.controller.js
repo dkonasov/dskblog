@@ -113,7 +113,43 @@
 			
 		}
 		
-		
+		categoryEntityController.update = function(req, res)
+		{
+			
+			if(req.params.id)
+			{
+				
+				var Category = require('../models/category.js');
+				delete req.body.category._id;
+				Category.findByIdAndUpdate(req.params.id, req.body.category, function(err, result)
+				{
+					
+					if(!err)
+					{
+				
+						res.status(200).end();
+				
+					} else 
+					{
+				
+						console.log(err);
+						res.status(500).end();
+				
+					}
+					
+				}
+				);
+				
+			}
+			else
+			{
+				
+				console.log("trying to modify category without id!");
+				res.status(500).end();
+				
+			}
+			
+		}
 		
 		return categoryEntityController;
 		
