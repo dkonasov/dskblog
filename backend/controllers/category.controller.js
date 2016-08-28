@@ -151,6 +151,27 @@
 			
 		}
 		
+		categoryEntityController.delete = function(req, res)
+		{
+
+			if(req.params.id){
+
+				var Category = require('../models/category.js');
+				Category.findByIdAndRemove(req.params.id, function(){
+
+					res.status(200).end();
+
+				});
+
+			}
+			else{
+
+				console.log("trying to delete category without id!");
+				res.status(500).end();
+
+			}
+
+		}
 		return categoryEntityController;
 		
 	}

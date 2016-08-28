@@ -47,7 +47,7 @@ describe("Api test", function()
 	}
 	);*/
 	
-	it('Modify category', function(done)
+	/*it('Modify category', function(done)
 	{
 		
 		request.get('http://127.0.0.1:8080/api/category/', function(error, response, body)
@@ -71,6 +71,29 @@ describe("Api test", function()
 		);
 		
 	}
-	);
+	);*/
+	it('Delete category', function(done){
+
+		request.get('http://127.0.0.1:8080/api/category/', function(error, response, body)
+		{
+			
+			console.log(body);
+			var articles = JSON.parse(body);
+			
+			
+			request.delete('http://127.0.0.1:8080/api/category/' + articles[0]._id, function(error, response, body)
+			{
+				
+				
+				assert(!error && response.statusCode == 200);
+				done();
+				
+			}
+			);
+			
+		}
+		);
+
+	});
 }
 );
