@@ -4,6 +4,7 @@
 	[
 	
 		'ngRoute',
+		'ngResource',
 		'dskblogControllers',
 		'ui.bootstrap'
 	

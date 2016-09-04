@@ -42,6 +42,8 @@ gulp.task('angularlibs', function()
 		'./bower_components/angular/angular.min.js',
 		'./bower_components/angular/angular.min.js.map',
 		'./bower_components/angular-route/angular-route.min.js',
+		'./bower_components/angular-resource/angular-resource.min.js',
+		'./bower_components/angular-resource/angular-resource.min.js.map',
 		'./bower_components/angular-route/angular-route.min.js.map',
 		'./bower_components/angular-bootstrap/ui-bootstrap.min.js',
 		'./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
@@ -60,6 +62,7 @@ gulp.task('appscripts', function()
 	[
 		
 		'./frontend/js/app/app.js',
+		'./frontend/js/app/services/*.js',
 		'./frontend/js/app/controllers.js',
 		'./frontend/js/app/controllers/*.js',
 		'./frontend/js/app/controllers/admin/*.js',

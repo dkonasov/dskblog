@@ -1,13 +1,13 @@
 (function()
 {
-	dskblog.controller('addCategoryModal', ['$http', '$uibModalInstance', '$scope', 'category', function($http, $uibModalInstance, $scope, category)
+	dskblog.controller('addCategoryModal', ['$http', '$uibModalInstance', '$scope', 'category', 'Categories', function($http, $uibModalInstance, $scope, category, Categories)
 	{
 		
 		$scope.category=category;
 		$scope.save = function()
 		{
 			
-			console.log($scope.category);
+			Categories.save($scope.category, function(response){console.log(response)});
 			
 		}
 		
